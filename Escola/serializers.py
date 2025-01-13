@@ -1,0 +1,27 @@
+from rest_framework import serializers
+from Escola.models import Estudante, Curso
+
+class EstudanteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Estudante
+        fields = [
+            'id',
+            'nome',
+            'email',
+            'cpf',
+            'data_nascimento',
+            'telefone'
+                    ]
+
+
+
+class CursoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Curso
+        fields = [
+            'codigo',
+            'descricao',
+            'nivel'
+
+            #pode colocar tbm o filds = '__all__' pega todos os campos da tabela
+                    ]
