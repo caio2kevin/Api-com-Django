@@ -1,11 +1,15 @@
 
 from django.contrib import admin
 from django.urls import path, include
-from Escola.views import estudantes
+from Escola.views import EstudanteViewSet, CursoViewSet
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register('estudantes', EstudanteViewSet, basename='Estudantes')
+router.register('cursos', CursoViewSet, basename='Cursos')
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('estudantes/',estudantes),
-    path('api-auth/', include('rest_framework.urls'))
+    path('', include(router.urls))
 ]
